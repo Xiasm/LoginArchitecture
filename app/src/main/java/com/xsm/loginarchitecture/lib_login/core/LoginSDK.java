@@ -1,8 +1,6 @@
-package com.xsm.loginarchitecture.lib_login;
+package com.xsm.loginarchitecture.lib_login.core;
 
 import android.content.Context;
-
-import com.xsm.loginarchitecture.lib_login.utils.LoginUtils;
 
 /**
  * Author: 夏胜明
@@ -29,7 +27,7 @@ public class LoginSDK {
 
     public void init(Context context, ILogin iLogin) {
         applicationContext = context.getApplicationContext();
-        LoginUtils.getInstance().setApplicationContext(context);
-        LoginUtils.getInstance().setiLogin(iLogin);
+        LoginAssistant.getInstance().setApplicationContext(context);
+        LoginAssistant.getInstance().setiLogin(iLogin);
     }
 }

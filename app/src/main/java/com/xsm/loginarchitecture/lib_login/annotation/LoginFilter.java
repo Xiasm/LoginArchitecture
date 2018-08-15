@@ -17,6 +17,4 @@ public @interface LoginFilter {
 
     int userDefine() default 0;
 
-    int loginFinishDefine() default 0;
-
 }

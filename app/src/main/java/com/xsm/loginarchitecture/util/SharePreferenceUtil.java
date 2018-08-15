@@ -1,4 +1,4 @@
-package com.xsm.loginarchitecture;
+package com.xsm.loginarchitecture.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

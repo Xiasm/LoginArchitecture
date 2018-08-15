@@ -1,8 +1,6 @@
-package com.xsm.loginarchitecture.lib_login.utils;
+package com.xsm.loginarchitecture.lib_login.core;
 
 import android.content.Context;
-
-import com.xsm.loginarchitecture.lib_login.ILogin;
 
 /**
  * Author: 夏胜明
@@ -10,16 +8,16 @@ import com.xsm.loginarchitecture.lib_login.ILogin;
  * Email: xiasem@163.com
  * Description:
  */
-public class LoginUtils {
-    private LoginUtils() {}
+class LoginAssistant {
+    private LoginAssistant() {}
 
-    private static LoginUtils instance;
+    private static LoginAssistant instance;
 
-    public static LoginUtils getInstance() {
+    public static LoginAssistant getInstance() {
         if (instance == null) {
-            synchronized (LoginUtils.class) {
+            synchronized (LoginAssistant.class) {
                 if (instance == null) {
-                    instance = new LoginUtils();
+                    instance = new LoginAssistant();
                 }
             }
         }

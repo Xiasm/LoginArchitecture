@@ -1,4 +1,4 @@
-package com.xsm.loginarchitecture.lib_login;
+package com.xsm.loginarchitecture.lib_login.core;
 
 import android.content.Context;
 

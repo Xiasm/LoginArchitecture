@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.xsm.loginarchitecture.util.SharePreferenceUtil;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     public void loginEvent(View view) {
         SharePreferenceUtil.setBooleanSp(SharePreferenceUtil.IS_LOGIN, true, this);
         Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
 

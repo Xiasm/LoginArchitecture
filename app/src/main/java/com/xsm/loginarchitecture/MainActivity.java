@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.xsm.loginarchitecture.lib_login.annotation.LoginFilter;
+import com.xsm.loginarchitecture.util.SharePreferenceUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,12 +18,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @LoginFilter(userDefine = 0, loginFinishDefine = 0)
+    @LoginFilter()
     public void skip(View view) {
         startActivity(new Intent(this, SecondActivity.class));
     }
 
+    public void skipNoLogin(View view) {
+        startActivity(new Intent(this, ThridActivity.class));
+    }
+
     public void clearLoginInfo(View view) {
         SharePreferenceUtil.clearSharePref(SharePreferenceUtil.IS_LOGIN, this);
+        Toast.makeText(this, "清除登录信息成功！", Toast.LENGTH_SHORT).show();
     }
+
+
+
 }

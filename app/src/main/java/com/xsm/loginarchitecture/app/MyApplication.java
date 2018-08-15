@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.xsm.loginarchitecture.LoginActivity;
-import com.xsm.loginarchitecture.SharePreferenceUtil;
-import com.xsm.loginarchitecture.lib_login.ILogin;
-import com.xsm.loginarchitecture.lib_login.LoginSDK;
+import com.xsm.loginarchitecture.util.SharePreferenceUtil;
+import com.xsm.loginarchitecture.lib_login.core.ILogin;
+import com.xsm.loginarchitecture.lib_login.core.LoginSDK;
 
 /**
  * Author: 夏胜明

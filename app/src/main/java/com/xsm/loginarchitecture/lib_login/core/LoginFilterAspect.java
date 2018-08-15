@@ -2,9 +2,8 @@ package com.xsm.loginarchitecture.lib_login.core;
 
 import android.content.Context;
 
-import com.xsm.loginarchitecture.lib_login.ILogin;
 import com.xsm.loginarchitecture.lib_login.annotation.LoginFilter;
-import com.xsm.loginarchitecture.lib_login.utils.LoginUtils;
+import com.xsm.loginarchitecture.lib_login.execption.NoInitException;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -29,13 +28,18 @@ public class LoginFilterAspect {
     @Around("loginFilter()")
     public void aroundLoginPoint(ProceedingJoinPoint joinPoint) throws Throwable {
 
-        ILogin iLogin = LoginUtils.getInstance().getiLogin();
+        ILogin iLogin = LoginAssistant.getInstance().getiLogin();
         if (iLogin == null) {
-            return;
+            throw new NoInitException("LoginSDK 没有初始化！");
         }
 
         LoginFilter loginFilter = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(LoginFilter.class);
-        Context param = LoginUtils.getInstance().getApplicationContext();
+        if (loginFilter == null) {
+            return;
+        }
+
+        Context param = LoginAssistant.getInstance().getApplicationContext();
+
         if (iLogin.isLogin(param)) {
             joinPoint.proceed();
         } else {
