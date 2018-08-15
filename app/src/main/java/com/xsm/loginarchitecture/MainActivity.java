@@ -21,4 +21,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SecondActivity.class));
     }
 
+    public void clearLoginInfo(View view) {
+        SharePreferenceUtil.clearSharePref(SharePreferenceUtil.IS_LOGIN, this);
+    }
 }
