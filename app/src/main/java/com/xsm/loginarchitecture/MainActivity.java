@@ -27,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ThridActivity.class));
     }
 
+
+    public void skipLoginFilter(View view) {
+        startActivity(new Intent(this, ExtendsLoginFilterActivity.class));
+    }
+
     public void clearLoginInfo(View view) {
         SharePreferenceUtil.clearSharePref(SharePreferenceUtil.IS_LOGIN, this);
         Toast.makeText(this, "清除登录信息成功！", Toast.LENGTH_SHORT).show();
     }
-
 
 
 }

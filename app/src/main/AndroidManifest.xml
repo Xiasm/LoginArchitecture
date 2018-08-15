@@ -20,6 +20,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".ThridActivity" />
+        <activity android:name=".LoginFilterActivity" />
+        <activity android:name=".ExtendsLoginFilterActivity"></activity>
     </application>
 
 </manifest>

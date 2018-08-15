@@ -3,13 +3,17 @@ package com.xsm.loginarchitecture.lib_login.core;
 import android.content.Context;
 
 import com.xsm.loginarchitecture.lib_login.annotation.LoginFilter;
+import com.xsm.loginarchitecture.lib_login.execption.AnnotationException;
 import com.xsm.loginarchitecture.lib_login.execption.NoInitException;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+
+import java.lang.reflect.Method;
 
 
 /**
@@ -33,7 +37,12 @@ public class LoginFilterAspect {
             throw new NoInitException("LoginSDK 没有初始化！");
         }
 
-        LoginFilter loginFilter = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(LoginFilter.class);
+        Signature signature = joinPoint.getSignature();
+        if (!(signature instanceof MethodSignature)) {
+            throw new AnnotationException("LoginFilter 注解只能用于方法上");
+        }
+        MethodSignature methodSignature = (MethodSignature) signature;
+        LoginFilter loginFilter = methodSignature.getMethod().getAnnotation(LoginFilter.class);
         if (loginFilter == null) {
             return;
         }
@@ -43,7 +52,20 @@ public class LoginFilterAspect {
         if (iLogin.isLogin(param)) {
             joinPoint.proceed();
         } else {
-            iLogin.login(param, loginFilter.userDefine());
+            Object target = joinPoint.getTarget();
+            Method method = target.getClass().getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+            String name = method.getName();
+            if (name.contains("lib_login_filter_onCreate")) {
+                Object[] args = joinPoint.getArgs();
+                if (args != null && args.length == 1 && (args[0] instanceof Boolean)) {
+                    joinPoint.proceed(new Object[] {true});
+                } else {
+                    iLogin.login(param, loginFilter.userDefine());
+                }
+            } else {
+                iLogin.login(param, loginFilter.userDefine());
+            }
+
         }
 
     }
