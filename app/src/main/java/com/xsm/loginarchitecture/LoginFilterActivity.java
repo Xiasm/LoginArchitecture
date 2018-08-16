@@ -12,6 +12,7 @@ public class LoginFilterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (lib_login_filter_onCreate(true)) {
+            //TODO: 你可以想做什么就做什么，在这里我让页面结束，并给用户提示
             Toast.makeText(this, "没有登录！", Toast.LENGTH_SHORT).show();
             finish();
         }
