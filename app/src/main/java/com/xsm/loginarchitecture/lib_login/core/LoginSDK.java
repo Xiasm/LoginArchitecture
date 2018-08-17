@@ -30,4 +30,11 @@ public class LoginSDK {
         LoginAssistant.getInstance().setApplicationContext(context);
         LoginAssistant.getInstance().setiLogin(iLogin);
     }
+
+    /**
+     * 单点登录，验证token失效的统一接入入口
+     */
+    public void serverTokenInvalidation(int userDefine) {
+        LoginAssistant.getInstance().serverTokenInvalidation(userDefine);
+    }
 }

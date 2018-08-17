@@ -45,6 +45,11 @@ public class MyApplication extends Application {
         public boolean isLogin(Context applicationContext) {
             return SharePreferenceUtil.getBooleanSp(SharePreferenceUtil.IS_LOGIN, applicationContext);
         }
+
+        @Override
+        public void clearLoginStatus(Context applicationContext) {
+            SharePreferenceUtil.setBooleanSp(SharePreferenceUtil.IS_LOGIN, false, applicationContext);
+        }
     };
 
 }

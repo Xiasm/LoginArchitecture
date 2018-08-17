@@ -43,4 +43,11 @@ class LoginAssistant {
     public void setApplicationContext(Context applicationContext) {
         this.applicationContext = applicationContext;
     }
+
+    public void serverTokenInvalidation(int userDefine) {
+        if (iLogin == null)
+            return;
+        iLogin.clearLoginStatus();
+        iLogin.login(applicationContext, userDefine);
+    }
 }
