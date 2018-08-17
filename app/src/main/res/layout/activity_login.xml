@@ -9,7 +9,7 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:text="login"
+        android:text="登录"
         android:onClick="loginEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
