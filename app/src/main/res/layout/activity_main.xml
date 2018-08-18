@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:onClick="skip"
+        android:id="@+id/skip"
         android:text="跳转到需要过滤登录的Activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
