@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.xsm.loginarchitecture.lib_login.annotation.LoginFilter;
 import com.xsm.loginarchitecture.util.SharePreferenceUtil;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
