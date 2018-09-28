@@ -8,7 +8,7 @@ import android.content.Context;
  * Email: xiasem@163.com
  * Description:
  */
-class LoginAssistant {
+public class LoginAssistant {
     private LoginAssistant() {}
 
     private static LoginAssistant instance;
