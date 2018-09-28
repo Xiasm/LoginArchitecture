@@ -52,20 +52,7 @@ public class LoginFilterAspect {
         if (iLogin.isLogin(param)) {
             joinPoint.proceed();
         } else {
-            Object target = joinPoint.getTarget();
-            Method method = target.getClass().getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
-            String name = method.getName();
-            if (name.contains("lib_login_filter_onCreate")) {
-                Object[] args = joinPoint.getArgs();
-                if (args != null && args.length == 1 && (args[0] instanceof Boolean)) {
-                    joinPoint.proceed(new Object[] {true});
-                } else {
-                    iLogin.login(param, loginFilter.userDefine());
-                }
-            } else {
-                iLogin.login(param, loginFilter.userDefine());
-            }
-
+            iLogin.login(param, loginFilter.userDefine());
         }
 
     }
